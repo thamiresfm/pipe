@@ -6,6 +6,7 @@ Resource            ../resources/actions.robot
 Test Setup          Start Browser
 Test Teardown       Finish Browser
 
+
 *** Test Cases ***
 Senha incorreta
     Submit Credentials         papito    123456

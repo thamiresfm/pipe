@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20231106 17:53:08.322" rpa="false" schemaversion="3">
+<suite id="s1" name="Tests" source="C:\Users\Base\Desktop\Thamires\pipeline\robot-login-react\tests">
+<suite id="s1-s1" name="Login" source="C:\Users\Base\Desktop\Thamires\pipeline\robot-login-react\tests\login.robot">
+<test id="s1-s1-t1" name="Senha incorreta" line="11">
+<kw name="Start Browser" library="actions" type="SETUP">
+<kw name="New Browser" library="Browser">
+<arg>browser=webkit</arg>
+<arg>headless=True</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<msg timestamp="20231106 17:53:12.262" level="INFO">{"browser": "webkit", "headless": true, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "deprecated_pos_args": [], "tracesDir": "C:\\Users\\Base\\Desktop\\Thamires\\pipeline\\robot-login-react\\logs\\browser\\traces\\657a8519-83cb-4ab9-a1b6-a29af1b06356"}</msg>
+<msg timestamp="20231106 17:53:14.326" level="INFO">Successfully created browser with options: {"browser":"webkit","headless":true,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"deprecated_pos_args":[],"tracesDir":"C:\\Users\\Base\\Desktop\\Thamires\\pipeline\\robot-login-react\\logs\\browser\\traces\\657a8519-83cb-4ab9-a1b6-a29af1b06356"}</msg>
+<status status="PASS" starttime="20231106 17:53:12.261" endtime="20231106 17:53:14.327"/>
+</kw>
+<kw name="New Page" library="Browser">
+<arg>${base_url}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<msg timestamp="20231106 17:53:16.390" level="INFO">Successfully initialized new page object and opened url: https://login-react-papito.vercel.app</msg>
+<msg timestamp="20231106 17:53:16.390" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<status status="PASS" starttime="20231106 17:53:14.328" endtime="20231106 17:53:16.390"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:12.260" endtime="20231106 17:53:16.390"/>
+</kw>
+<kw name="Submit Credentials" library="actions">
+<arg>papito</arg>
+<arg>123456</arg>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user</arg>
+<arg>${user}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:16.392" level="INFO">Fills the text 'papito' in the given field.</msg>
+<status status="PASS" starttime="20231106 17:53:16.392" endtime="20231106 17:53:16.762"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#pass</arg>
+<arg>${pass}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:16.764" level="INFO">Fills the text '123456' in the given field.</msg>
+<status status="PASS" starttime="20231106 17:53:16.763" endtime="20231106 17:53:17.279"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#btnLogin</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20231106 17:53:17.280" endtime="20231106 17:53:18.458"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:16.391" endtime="20231106 17:53:18.459"/>
+</kw>
+<kw name="Toast Message Should Be" library="actions">
+<arg>Oops! Credenciais inválidas :(</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${ele}</var>
+<arg>css=div[role=status]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231106 17:53:18.460" level="INFO">${ele} = css=div[role=status]</msg>
+<status status="PASS" starttime="20231106 17:53:18.460" endtime="20231106 17:53:18.461"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>${ele}</arg>
+<arg>visible</arg>
+<arg>5</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20231106 17:53:18.603" level="INFO">Waited for Element with selector css=div[role=status] at state visible</msg>
+<status status="PASS" starttime="20231106 17:53:18.461" endtime="20231106 17:53:18.603"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<arg>${ele}</arg>
+<arg>equal</arg>
+<arg>${target}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:18.965" level="INFO">Text: 'Oops! Credenciais inválidas :('</msg>
+<status status="PASS" starttime="20231106 17:53:18.604" endtime="20231106 17:53:18.965"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:18.460" endtime="20231106 17:53:18.966"/>
+</kw>
+<kw name="Finish Browser" library="actions" type="TEARDOWN">
+<kw name="Take Screenshot" library="Browser">
+<arg>fullPage=true</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20231106 17:53:19.740" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-1.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-1.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231106 17:53:18.967" endtime="20231106 17:53:19.740"/>
+</kw>
+<kw name="Send Message To Teams" library="actions">
+<arg>Os testes foram concluídos com sucesso!</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231106 17:53:19.742" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20231106 17:53:19.741" endtime="20231106 17:53:19.742"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({"text": "${message}"})</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231106 17:53:19.743" level="INFO">${body} = {"text": "Os testes foram conclu\u00eddos com sucesso!"}</msg>
+<status status="PASS" starttime="20231106 17:53:19.742" endtime="20231106 17:53:19.743"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${response}</var>
+<arg>POST On Session</arg>
+<arg>teams</arg>
+<arg>url=${webhook_url}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>teams</arg>
+<arg>url=${webhook_url}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20231106 17:53:19.745" level="FAIL">Non-existing index or alias 'teams'.</msg>
+<status status="FAIL" starttime="20231106 17:53:19.743" endtime="20231106 17:53:19.758"/>
+</kw>
+<msg timestamp="20231106 17:53:19.758" level="INFO">${response} = False</msg>
+<status status="PASS" starttime="20231106 17:53:19.743" endtime="20231106 17:53:19.758"/>
+</kw>
+<if>
+<branch type="IF" condition="${response}">
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20231106 17:53:19.759" endtime="20231106 17:53:19.759"/>
+</kw>
+<status status="NOT RUN" starttime="20231106 17:53:19.759" endtime="20231106 17:53:19.759"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>Failed to send message to Teams.</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231106 17:53:19.760" level="INFO">Failed to send message to Teams.</msg>
+<status status="PASS" starttime="20231106 17:53:19.760" endtime="20231106 17:53:19.760"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:19.759" endtime="20231106 17:53:19.761"/>
+</branch>
+<status status="PASS" starttime="20231106 17:53:19.759" endtime="20231106 17:53:19.761"/>
+</if>
+<status status="PASS" starttime="20231106 17:53:19.740" endtime="20231106 17:53:19.762"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:18.967" endtime="20231106 17:53:19.762"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:12.252" endtime="20231106 17:53:19.763"/>
+</test>
+<test id="s1-s1-t2" name="Usuário não cadastrado" line="15">
+<kw name="Start Browser" library="actions" type="SETUP">
+<kw name="New Browser" library="Browser">
+<arg>browser=webkit</arg>
+<arg>headless=True</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<msg timestamp="20231106 17:53:20.123" level="INFO">Switching browser to browser=c49810e7-986a-4d9c-8ceb-3ce5156c4e34</msg>
+<msg timestamp="20231106 17:53:20.128" level="INFO">Successfully changed active browser</msg>
+<msg timestamp="20231106 17:53:20.128" level="INFO">Reusing existing browser with id: browser=c49810e7-986a-4d9c-8ceb-3ce5156c4e34</msg>
+<status status="PASS" starttime="20231106 17:53:20.122" endtime="20231106 17:53:20.129"/>
+</kw>
+<kw name="New Page" library="Browser">
+<arg>${base_url}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<msg timestamp="20231106 17:53:21.918" level="INFO">Successfully initialized new page object and opened url: https://login-react-papito.vercel.app</msg>
+<msg timestamp="20231106 17:53:21.918" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<status status="PASS" starttime="20231106 17:53:20.129" endtime="20231106 17:53:21.919"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:20.121" endtime="20231106 17:53:21.919"/>
+</kw>
+<kw name="Submit Credentials" library="actions">
+<arg>teste123</arg>
+<arg>123456</arg>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user</arg>
+<arg>${user}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:21.921" level="INFO">Fills the text 'teste123' in the given field.</msg>
+<status status="PASS" starttime="20231106 17:53:21.921" endtime="20231106 17:53:22.278"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#pass</arg>
+<arg>${pass}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:22.279" level="INFO">Fills the text '123456' in the given field.</msg>
+<status status="PASS" starttime="20231106 17:53:22.279" endtime="20231106 17:53:22.829"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#btnLogin</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20231106 17:53:22.830" endtime="20231106 17:53:23.999"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:21.920" endtime="20231106 17:53:23.999"/>
+</kw>
+<kw name="Toast Message Should Be" library="actions">
+<arg>Oops! Credenciais inválidas :(</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${ele}</var>
+<arg>css=div[role=status]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231106 17:53:24.001" level="INFO">${ele} = css=div[role=status]</msg>
+<status status="PASS" starttime="20231106 17:53:24.001" endtime="20231106 17:53:24.001"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>${ele}</arg>
+<arg>visible</arg>
+<arg>5</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20231106 17:53:24.147" level="INFO">Waited for Element with selector css=div[role=status] at state visible</msg>
+<status status="PASS" starttime="20231106 17:53:24.002" endtime="20231106 17:53:24.147"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<arg>${ele}</arg>
+<arg>equal</arg>
+<arg>${target}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:24.503" level="INFO">Text: 'Oops! Credenciais inválidas :('</msg>
+<status status="PASS" starttime="20231106 17:53:24.147" endtime="20231106 17:53:24.504"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:24.000" endtime="20231106 17:53:24.504"/>
+</kw>
+<kw name="Finish Browser" library="actions" type="TEARDOWN">
+<kw name="Take Screenshot" library="Browser">
+<arg>fullPage=true</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20231106 17:53:25.120" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-2.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-2.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231106 17:53:24.505" endtime="20231106 17:53:25.120"/>
+</kw>
+<kw name="Send Message To Teams" library="actions">
+<arg>Os testes foram concluídos com sucesso!</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231106 17:53:25.121" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20231106 17:53:25.121" endtime="20231106 17:53:25.121"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({"text": "${message}"})</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231106 17:53:25.122" level="INFO">${body} = {"text": "Os testes foram conclu\u00eddos com sucesso!"}</msg>
+<status status="PASS" starttime="20231106 17:53:25.121" endtime="20231106 17:53:25.122"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${response}</var>
+<arg>POST On Session</arg>
+<arg>teams</arg>
+<arg>url=${webhook_url}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>teams</arg>
+<arg>url=${webhook_url}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20231106 17:53:25.123" level="FAIL">Non-existing index or alias 'teams'.</msg>
+<status status="FAIL" starttime="20231106 17:53:25.123" endtime="20231106 17:53:25.124"/>
+</kw>
+<msg timestamp="20231106 17:53:25.124" level="INFO">${response} = False</msg>
+<status status="PASS" starttime="20231106 17:53:25.122" endtime="20231106 17:53:25.124"/>
+</kw>
+<if>
+<branch type="IF" condition="${response}">
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20231106 17:53:25.125" endtime="20231106 17:53:25.125"/>
+</kw>
+<status status="NOT RUN" starttime="20231106 17:53:25.125" endtime="20231106 17:53:25.125"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>Failed to send message to Teams.</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231106 17:53:25.126" level="INFO">Failed to send message to Teams.</msg>
+<status status="PASS" starttime="20231106 17:53:25.125" endtime="20231106 17:53:25.126"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:25.125" endtime="20231106 17:53:25.126"/>
+</branch>
+<status status="PASS" starttime="20231106 17:53:25.125" endtime="20231106 17:53:25.126"/>
+</if>
+<status status="PASS" starttime="20231106 17:53:25.120" endtime="20231106 17:53:25.127"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:24.505" endtime="20231106 17:53:25.127"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:20.115" endtime="20231106 17:53:25.128"/>
+</test>
+<test id="s1-s1-t3" name="Usuário deve ser obrigatório" line="19">
+<kw name="Start Browser" library="actions" type="SETUP">
+<kw name="New Browser" library="Browser">
+<arg>browser=webkit</arg>
+<arg>headless=True</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<msg timestamp="20231106 17:53:25.369" level="INFO">Switching browser to browser=c49810e7-986a-4d9c-8ceb-3ce5156c4e34</msg>
+<msg timestamp="20231106 17:53:25.375" level="INFO">Successfully changed active browser</msg>
+<msg timestamp="20231106 17:53:25.375" level="INFO">Reusing existing browser with id: browser=c49810e7-986a-4d9c-8ceb-3ce5156c4e34</msg>
+<status status="PASS" starttime="20231106 17:53:25.369" endtime="20231106 17:53:25.375"/>
+</kw>
+<kw name="New Page" library="Browser">
+<arg>${base_url}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<msg timestamp="20231106 17:53:27.249" level="INFO">Successfully initialized new page object and opened url: https://login-react-papito.vercel.app</msg>
+<msg timestamp="20231106 17:53:27.250" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<status status="PASS" starttime="20231106 17:53:25.376" endtime="20231106 17:53:27.250"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:25.368" endtime="20231106 17:53:27.250"/>
+</kw>
+<kw name="Submit Credentials" library="actions">
+<arg>${EMPTY}</arg>
+<arg>123456</arg>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user</arg>
+<arg>${user}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:27.252" level="INFO">Fills the text '' in the given field.</msg>
+<status status="PASS" starttime="20231106 17:53:27.252" endtime="20231106 17:53:27.668"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#pass</arg>
+<arg>${pass}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:27.668" level="INFO">Fills the text '123456' in the given field.</msg>
+<status status="PASS" starttime="20231106 17:53:27.668" endtime="20231106 17:53:28.171"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#btnLogin</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20231106 17:53:28.172" endtime="20231106 17:53:29.349"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:27.250" endtime="20231106 17:53:29.349"/>
+</kw>
+<kw name="Toast Message Should Be" library="actions">
+<arg>Informe o seu nome de usuário!</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${ele}</var>
+<arg>css=div[role=status]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231106 17:53:29.351" level="INFO">${ele} = css=div[role=status]</msg>
+<status status="PASS" starttime="20231106 17:53:29.350" endtime="20231106 17:53:29.351"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>${ele}</arg>
+<arg>visible</arg>
+<arg>5</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20231106 17:53:29.493" level="INFO">Waited for Element with selector css=div[role=status] at state visible</msg>
+<status status="PASS" starttime="20231106 17:53:29.351" endtime="20231106 17:53:29.493"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<arg>${ele}</arg>
+<arg>equal</arg>
+<arg>${target}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:29.839" level="INFO">Text: 'Informe o seu nome de usuário!'</msg>
+<status status="PASS" starttime="20231106 17:53:29.493" endtime="20231106 17:53:29.839"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:29.350" endtime="20231106 17:53:29.839"/>
+</kw>
+<kw name="Finish Browser" library="actions" type="TEARDOWN">
+<kw name="Take Screenshot" library="Browser">
+<arg>fullPage=true</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20231106 17:53:30.448" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-3.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-3.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231106 17:53:29.841" endtime="20231106 17:53:30.449"/>
+</kw>
+<kw name="Send Message To Teams" library="actions">
+<arg>Os testes foram concluídos com sucesso!</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231106 17:53:30.451" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20231106 17:53:30.450" endtime="20231106 17:53:30.451"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({"text": "${message}"})</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231106 17:53:30.452" level="INFO">${body} = {"text": "Os testes foram conclu\u00eddos com sucesso!"}</msg>
+<status status="PASS" starttime="20231106 17:53:30.451" endtime="20231106 17:53:30.452"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${response}</var>
+<arg>POST On Session</arg>
+<arg>teams</arg>
+<arg>url=${webhook_url}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>teams</arg>
+<arg>url=${webhook_url}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20231106 17:53:30.455" level="FAIL">Non-existing index or alias 'teams'.</msg>
+<status status="FAIL" starttime="20231106 17:53:30.453" endtime="20231106 17:53:30.456"/>
+</kw>
+<msg timestamp="20231106 17:53:30.456" level="INFO">${response} = False</msg>
+<status status="PASS" starttime="20231106 17:53:30.453" endtime="20231106 17:53:30.456"/>
+</kw>
+<if>
+<branch type="IF" condition="${response}">
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20231106 17:53:30.457" endtime="20231106 17:53:30.457"/>
+</kw>
+<status status="NOT RUN" starttime="20231106 17:53:30.457" endtime="20231106 17:53:30.457"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>Failed to send message to Teams.</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231106 17:53:30.458" level="INFO">Failed to send message to Teams.</msg>
+<status status="PASS" starttime="20231106 17:53:30.457" endtime="20231106 17:53:30.458"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:30.457" endtime="20231106 17:53:30.458"/>
+</branch>
+<status status="PASS" starttime="20231106 17:53:30.457" endtime="20231106 17:53:30.458"/>
+</if>
+<status status="PASS" starttime="20231106 17:53:30.449" endtime="20231106 17:53:30.458"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:29.840" endtime="20231106 17:53:30.458"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:25.362" endtime="20231106 17:53:30.459"/>
+</test>
+<test id="s1-s1-t4" name="Senha deve ser obrigatória" line="23">
+<kw name="Start Browser" library="actions" type="SETUP">
+<kw name="New Browser" library="Browser">
+<arg>browser=webkit</arg>
+<arg>headless=True</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<msg timestamp="20231106 17:53:30.755" level="INFO">Switching browser to browser=c49810e7-986a-4d9c-8ceb-3ce5156c4e34</msg>
+<msg timestamp="20231106 17:53:30.758" level="INFO">Successfully changed active browser</msg>
+<msg timestamp="20231106 17:53:30.759" level="INFO">Reusing existing browser with id: browser=c49810e7-986a-4d9c-8ceb-3ce5156c4e34</msg>
+<status status="PASS" starttime="20231106 17:53:30.754" endtime="20231106 17:53:30.759"/>
+</kw>
+<kw name="New Page" library="Browser">
+<arg>${base_url}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<msg timestamp="20231106 17:53:32.822" level="INFO">Successfully initialized new page object and opened url: https://login-react-papito.vercel.app</msg>
+<msg timestamp="20231106 17:53:32.822" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<status status="PASS" starttime="20231106 17:53:30.759" endtime="20231106 17:53:32.823"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:30.754" endtime="20231106 17:53:32.823"/>
+</kw>
+<kw name="Submit Credentials" library="actions">
+<arg>teste123</arg>
+<arg>${EMPTY}</arg>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user</arg>
+<arg>${user}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:32.826" level="INFO">Fills the text 'teste123' in the given field.</msg>
+<status status="PASS" starttime="20231106 17:53:32.825" endtime="20231106 17:53:33.254"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#pass</arg>
+<arg>${pass}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:33.254" level="INFO">Fills the text '' in the given field.</msg>
+<status status="PASS" starttime="20231106 17:53:33.254" endtime="20231106 17:53:33.806"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#btnLogin</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20231106 17:53:33.806" endtime="20231106 17:53:34.978"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:32.824" endtime="20231106 17:53:34.979"/>
+</kw>
+<kw name="Toast Message Should Be" library="actions">
+<arg>Informe a sua senha secreta!</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${ele}</var>
+<arg>css=div[role=status]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231106 17:53:34.981" level="INFO">${ele} = css=div[role=status]</msg>
+<status status="PASS" starttime="20231106 17:53:34.981" endtime="20231106 17:53:34.981"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>${ele}</arg>
+<arg>visible</arg>
+<arg>5</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20231106 17:53:35.120" level="INFO">Waited for Element with selector css=div[role=status] at state visible</msg>
+<status status="PASS" starttime="20231106 17:53:34.982" endtime="20231106 17:53:35.120"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<arg>${ele}</arg>
+<arg>equal</arg>
+<arg>${target}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:35.477" level="INFO">Text: 'Informe a sua senha secreta!'</msg>
+<status status="PASS" starttime="20231106 17:53:35.121" endtime="20231106 17:53:35.477"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:34.980" endtime="20231106 17:53:35.477"/>
+</kw>
+<kw name="Finish Browser" library="actions" type="TEARDOWN">
+<kw name="Take Screenshot" library="Browser">
+<arg>fullPage=true</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20231106 17:53:35.981" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-4.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-4.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231106 17:53:35.479" endtime="20231106 17:53:35.981"/>
+</kw>
+<kw name="Send Message To Teams" library="actions">
+<arg>Os testes foram concluídos com sucesso!</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231106 17:53:35.984" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20231106 17:53:35.983" endtime="20231106 17:53:35.984"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({"text": "${message}"})</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231106 17:53:35.984" level="INFO">${body} = {"text": "Os testes foram conclu\u00eddos com sucesso!"}</msg>
+<status status="PASS" starttime="20231106 17:53:35.984" endtime="20231106 17:53:35.984"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${response}</var>
+<arg>POST On Session</arg>
+<arg>teams</arg>
+<arg>url=${webhook_url}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>teams</arg>
+<arg>url=${webhook_url}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20231106 17:53:35.986" level="FAIL">Non-existing index or alias 'teams'.</msg>
+<status status="FAIL" starttime="20231106 17:53:35.985" endtime="20231106 17:53:35.987"/>
+</kw>
+<msg timestamp="20231106 17:53:35.987" level="INFO">${response} = False</msg>
+<status status="PASS" starttime="20231106 17:53:35.985" endtime="20231106 17:53:35.987"/>
+</kw>
+<if>
+<branch type="IF" condition="${response}">
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20231106 17:53:35.987" endtime="20231106 17:53:35.988"/>
+</kw>
+<status status="NOT RUN" starttime="20231106 17:53:35.987" endtime="20231106 17:53:35.988"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>Failed to send message to Teams.</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231106 17:53:35.988" level="INFO">Failed to send message to Teams.</msg>
+<status status="PASS" starttime="20231106 17:53:35.988" endtime="20231106 17:53:35.988"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:35.988" endtime="20231106 17:53:35.988"/>
+</branch>
+<status status="PASS" starttime="20231106 17:53:35.987" endtime="20231106 17:53:35.989"/>
+</if>
+<status status="PASS" starttime="20231106 17:53:35.982" endtime="20231106 17:53:35.989"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:35.479" endtime="20231106 17:53:35.989"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:30.743" endtime="20231106 17:53:35.990"/>
+</test>
+<test id="s1-s1-t5" name="Login com sucesso" line="27">
+<kw name="Start Browser" library="actions" type="SETUP">
+<kw name="New Browser" library="Browser">
+<arg>browser=webkit</arg>
+<arg>headless=True</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<msg timestamp="20231106 17:53:36.233" level="INFO">Switching browser to browser=c49810e7-986a-4d9c-8ceb-3ce5156c4e34</msg>
+<msg timestamp="20231106 17:53:36.237" level="INFO">Successfully changed active browser</msg>
+<msg timestamp="20231106 17:53:36.237" level="INFO">Reusing existing browser with id: browser=c49810e7-986a-4d9c-8ceb-3ce5156c4e34</msg>
+<status status="PASS" starttime="20231106 17:53:36.232" endtime="20231106 17:53:36.237"/>
+</kw>
+<kw name="New Page" library="Browser">
+<arg>${base_url}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<msg timestamp="20231106 17:53:37.314" level="INFO">Successfully initialized new page object and opened url: https://login-react-papito.vercel.app</msg>
+<msg timestamp="20231106 17:53:37.314" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<status status="PASS" starttime="20231106 17:53:36.238" endtime="20231106 17:53:37.314"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:36.231" endtime="20231106 17:53:37.316"/>
+</kw>
+<kw name="Submit Credentials" library="actions">
+<arg>papito</arg>
+<arg>rocks</arg>
+<kw name="Fill Text" library="Browser">
+<arg>css=#user</arg>
+<arg>${user}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:37.318" level="INFO">Fills the text 'papito' in the given field.</msg>
+<status status="PASS" starttime="20231106 17:53:37.317" endtime="20231106 17:53:37.806"/>
+</kw>
+<kw name="Fill Text" library="Browser">
+<arg>css=#pass</arg>
+<arg>${pass}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:37.807" level="INFO">Fills the text 'rocks' in the given field.</msg>
+<status status="PASS" starttime="20231106 17:53:37.807" endtime="20231106 17:53:38.300"/>
+</kw>
+<kw name="Click" library="Browser">
+<arg>css=#btnLogin</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20231106 17:53:38.300" endtime="20231106 17:53:39.532"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:37.316" endtime="20231106 17:53:39.532"/>
+</kw>
+<kw name="Modal Title Should Be" library="actions">
+<arg>Tudo certo!</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${ele}</var>
+<arg>css=#swal2-title</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231106 17:53:39.535" level="INFO">${ele} = css=#swal2-title</msg>
+<status status="PASS" starttime="20231106 17:53:39.534" endtime="20231106 17:53:39.535"/>
+</kw>
+<kw name="Wait For Elements State" library="Browser">
+<arg>${ele}</arg>
+<arg>visible</arg>
+<arg>5</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20231106 17:53:39.686" level="INFO">Waited for Element with selector css=#swal2-title at state visible</msg>
+<status status="PASS" starttime="20231106 17:53:39.535" endtime="20231106 17:53:39.687"/>
+</kw>
+<kw name="Get Text" library="Browser">
+<arg>${ele}</arg>
+<arg>equal</arg>
+<arg>${target}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<msg timestamp="20231106 17:53:40.042" level="INFO">Text: 'Tudo certo!'</msg>
+<status status="PASS" starttime="20231106 17:53:39.687" endtime="20231106 17:53:40.042"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:39.534" endtime="20231106 17:53:40.042"/>
+</kw>
+<kw name="Finish Browser" library="actions" type="TEARDOWN">
+<kw name="Take Screenshot" library="Browser">
+<arg>fullPage=true</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20231106 17:53:40.597" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-5.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-5.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20231106 17:53:40.044" endtime="20231106 17:53:40.597"/>
+</kw>
+<kw name="Send Message To Teams" library="actions">
+<arg>Os testes foram concluídos com sucesso!</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231106 17:53:40.598" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20231106 17:53:40.598" endtime="20231106 17:53:40.598"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({"text": "${message}"})</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231106 17:53:40.599" level="INFO">${body} = {"text": "Os testes foram conclu\u00eddos com sucesso!"}</msg>
+<status status="PASS" starttime="20231106 17:53:40.599" endtime="20231106 17:53:40.599"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${response}</var>
+<arg>POST On Session</arg>
+<arg>teams</arg>
+<arg>url=${webhook_url}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>teams</arg>
+<arg>url=${webhook_url}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20231106 17:53:40.601" level="FAIL">Non-existing index or alias 'teams'.</msg>
+<status status="FAIL" starttime="20231106 17:53:40.600" endtime="20231106 17:53:40.602"/>
+</kw>
+<msg timestamp="20231106 17:53:40.602" level="INFO">${response} = False</msg>
+<status status="PASS" starttime="20231106 17:53:40.599" endtime="20231106 17:53:40.603"/>
+</kw>
+<if>
+<branch type="IF" condition="${response}">
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20231106 17:53:40.604" endtime="20231106 17:53:40.604"/>
+</kw>
+<status status="NOT RUN" starttime="20231106 17:53:40.603" endtime="20231106 17:53:40.604"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>Failed to send message to Teams.</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231106 17:53:40.604" level="INFO">Failed to send message to Teams.</msg>
+<status status="PASS" starttime="20231106 17:53:40.604" endtime="20231106 17:53:40.604"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:40.604" endtime="20231106 17:53:40.605"/>
+</branch>
+<status status="PASS" starttime="20231106 17:53:40.603" endtime="20231106 17:53:40.605"/>
+</if>
+<status status="PASS" starttime="20231106 17:53:40.597" endtime="20231106 17:53:40.605"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:40.044" endtime="20231106 17:53:40.606"/>
+</kw>
+<status status="PASS" starttime="20231106 17:53:36.225" endtime="20231106 17:53:40.606"/>
+</test>
+<doc>Testes de Criação de Clientes</doc>
+<status status="PASS" starttime="20231106 17:53:08.363" endtime="20231106 17:53:40.868"/>
+</suite>
+<status status="PASS" starttime="20231106 17:53:08.325" endtime="20231106 17:53:40.882"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="5" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="5" fail="0" skip="0" id="s1-s1" name="Login">Tests.Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
